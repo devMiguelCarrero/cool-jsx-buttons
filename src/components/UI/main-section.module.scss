@@ -1,0 +1,16 @@
+.main-section {
+  min-height: 50vh;
+  width: 100%;
+  max-width: 1920px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+  &:not(:last-child) {
+    border-bottom: solid 3px #fff;
+  }
+}
