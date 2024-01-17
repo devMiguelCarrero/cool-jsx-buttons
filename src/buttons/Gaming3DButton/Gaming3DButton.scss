@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&display=swap");
+
+$borderColor: #592b25;
+$dangerColor: #ee4c61;
+$dangerShadowColor: #e43841;
+$warningColor: #f5cb45;
+$warningShadowColor: #f0a73f;
+$infoColor: #4dd2e1;
+$infoShadowColor: #39babb;
+$successColor: #4de17e;
+$successShadowColor: #62bb39;
+$disabledColor: #b5ced1;
+$disabledShadowColor: rgb(142, 168, 168);
+$baseColor: #ffedc9;
+$baseShadowColor: #f5d299;
+$borderWeight: 2px;
+$basePadding: 0.5rem;
+$animationSpeed: 0.1s;
+
+@mixin border-config {
+  border: solid $borderWeight $borderColor;
+  border-radius: 10px;
+}
+
+@mixin background-config {
+  position: absolute;
+  left: -#{$borderWeight};
+  width: 100%;
+  height: 100%;
+}
+
+@mixin shadow-position-config {
+  bottom: -0.6rem;
+  z-index: -2;
+}
+
+@mixin background-position-config {
+  top: -#{$borderWeight};
+  z-index: -1;
+}
+
+.gaming-3d-button-container {
+  display: table;
+  position: relative;
+  padding-left: $basePadding;
+  padding-right: $basePadding;
+  padding-bottom: $basePadding;
+  background-color: $baseColor;
+  @include border-config();
+
+  &::before,
+  &::after {
+    content: "";
+    @include background-config();
+    background-color: $baseShadowColor;
+    @include border-config();
+  }
+
+  &::before {
+    @include background-position-config();
+  }
+
+  &::after {
+    @include shadow-position-config();
+  }
+
+  .gaming-3d-button {
+    position: relative;
+    z-index: 5;
+    padding: 0.5rem 1rem;
+    background-color: $infoColor;
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: "Fredoka", sans-serif;
+    @include border-config();
+    cursor: pointer;
+    font-weight: 500;
+    transform: translateY(-0.6rem);
+    margin-top: -0.5rem;
+    transition: transform $animationSpeed ease-in-out;
+
+    &:not(:disabled) {
+      &:hover {
+        transform: translateY(-0.5rem);
+        &::after {
+          bottom: -0.5rem;
+        }
+      }
+
+      &:active {
+        transform: translateY(calc(0rem - #{$borderWeight}));
+        &::after {
+          bottom: calc(0px - #{$borderWeight});
+        }
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      @include background-config();
+      @include border-config();
+    }
+
+    &::before {
+      background-color: $infoColor;
+      @include background-position-config();
+    }
+
+    &::after {
+      background-color: $infoShadowColor;
+      transition: bottom $animationSpeed ease-in-out;
+      @include shadow-position-config();
+    }
+
+    &--danger {
+      background-color: $dangerColor;
+
+      &::before {
+        background-color: $dangerColor;
+      }
+
+      &::after {
+        background-color: $dangerShadowColor;
+      }
+    }
+
+    &--warning {
+      background-color: $warningColor;
+
+      &::before {
+        background-color: $warningColor;
+      }
+
+      &::after {
+        background-color: $warningShadowColor;
+      }
+    }
+
+    &--success {
+      background-color: $successColor;
+
+      &::before {
+        background-color: $successColor;
+      }
+
+      &::after {
+        background-color: $successColor;
+      }
+    }
+
+    &:disabled {
+      background-color: $disabledColor;
+
+      &::before {
+        background-color: $disabledColor;
+      }
+
+      &::after {
+        background-color: $disabledShadowColor;
+      }
+
+      transform: translateY(calc(0rem - #{$borderWeight}));
+      &::after {
+        bottom: calc(0px - #{$borderWeight});
+      }
+    }
+  }
+
+  &--rounded {
+    border-radius: 50%;
+    &::before,
+    &::after {
+      border-radius: 50%;
+    }
+    .gaming-3d-button {
+      border-radius: 50%;
+      &::before,
+      &::after {
+        border-radius: 50%;
+      }
+    }
+  }
+}

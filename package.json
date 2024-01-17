@@ -1,0 +1,39 @@
+{
+  "name": "cool-jsx-buttons",
+  "homepage": "https://github.com/devMiguelCarrero/cool-jsx-buttons",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devMiguelCarrero/cool-jsx-buttons.git"
+  },
+  "description": "Just a collection of cool buttons made with react that you can use in your project",
+  "author": "devMiguelCarrero",
+  "keywords": [
+    "react",
+    "buttons",
+    "UI",
+    "components"
+  ],
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.69.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5"
+  }
+}
