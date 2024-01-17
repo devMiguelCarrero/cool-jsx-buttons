@@ -1,0 +1,72 @@
+.vegas-neon-button {
+  position: relative;
+  z-index: 5;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: solid 2px #fff;
+  border-radius: 100px;
+  min-width: 150px;
+  color: #fff;
+	cursor: pointer;
+	box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	font-size: 1.5rem;
+	transition: box-shadow .3s ease-in-out;
+
+	&:hover {
+		box-shadow: 0 0 15px #39ff14, inset 0 0 15px #39ff14;
+	}
+
+	&--intermitent {
+		animation: intermitent 5s infinite;
+		transition: none;
+		&:hover {
+			animation: none;
+		}
+	}
+}
+
+@keyframes intermitent {
+	0% {
+		box-shadow: none;
+	}
+	5% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	6% {
+		box-shadow: none;
+	}
+	8% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	9% {
+		box-shadow: none;
+	}
+	11% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	34% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	35% {
+		box-shadow: none;
+	}
+	44% {
+		box-shadow: none;
+	}
+	45% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	46% {
+		box-shadow: none;
+	}
+	47% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+	48% {
+		box-shadow: none;
+	}
+	49% {
+		box-shadow: 0 0 10px #39ff14, inset 0 0 10px #39ff14;
+	}
+}
+
