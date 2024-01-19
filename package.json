@@ -7,11 +7,26 @@
   },
   "description": "Just a collection of cool buttons made with react that you can use in your project",
   "author": "devMiguelCarrero",
+  "funding": {
+    "type": "individual",
+    "url": "https://www.paypal.com/donate/?hosted_button_id=RKK3G3FWEAMLU"
+  },
   "keywords": [
     "react",
     "buttons",
     "UI",
-    "components"
+    "components",
+    "stylish-buttons",
+    "customizable",
+    "design",
+    "frontend",
+    "web-development",
+    "creative-components",
+    "button-library",
+    "modern-ui",
+    "react-components",
+    "user-interface",
+    "interactive-buttons"
   ],
   "version": "0.1.0",
   "private": false,
@@ -23,6 +38,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
