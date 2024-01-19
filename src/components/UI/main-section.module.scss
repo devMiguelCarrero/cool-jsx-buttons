@@ -4,13 +4,32 @@
   max-width: 1920px;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   padding: 1rem;
-  &:not(:last-child) {
-    border-bottom: solid 3px #fff;
+
+  &__title {
+    flex: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__credits {
+    padding-top: 1rem;
+    flex: 0;
+    text-align: center;
   }
 }
