@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Head from 'next/head';
 
-import '@/styles/style.scss';
+import '@/shared/styles/style.scss';
 
 export const metadata: Metadata = {
   title: 'Cool JSX Buttons',
@@ -15,6 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+      </Head>
       <body>{children}</body>
     </html>
   );
