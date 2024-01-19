@@ -1,0 +1,31 @@
+.repo-link {
+  display: table;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: fit-content;
+  bottom: 10px;
+  right: 10px;
+  background-color: #fff;
+  border: solid 2px #000;
+  color: #000;
+  padding: 10px;
+  text-decoration: none;
+  z-index: 100;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  svg {
+    width: 2em;
+    height: 2em;
+  }
+}
