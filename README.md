@@ -1,5 +1,7 @@
 # cool-jsx-buttons
 Just a collection of cool buttons made with react that you can use in your project
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
