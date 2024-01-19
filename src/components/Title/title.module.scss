@@ -1,0 +1,38 @@
+@import '@/shared/styles/abstracts/colors';
+
+.title {
+  font-size: 1.5em;
+
+  &__excerpt {
+    font-size: 0.7em;
+  }
+
+  &--light {
+    .title__excerpt {
+      font-size: 1.2em;
+      font-family: var(--font-main-bold);
+    }
+  }
+
+  &--colossal {
+    font-size: 2.5em;
+    .title__excerpt {
+      font-size: 1em;
+      font-family: var(--font-main-bold);
+    }
+  }
+
+  &--massive {
+    .title__excerpt {
+      font-size: 1.4em;
+      font-family: var(--font-main-bold);
+    }
+  }
+
+  &--medium {
+    .title__excerpt {
+      font-size: 1.4em;
+      font-family: var(--font-main-bold);
+    }
+  }
+}
