@@ -1,0 +1,71 @@
+$background-color: #030a1d;
+$color: #fff;
+$icon-stroke: 1px;
+$button-gap: 40%;
+$transition-timing: cubic-bezier(0.22, 0.68, 0, 1.71);
+$transition-time: 0.4s;
+
+$sizes: (
+  ('small', 25px, 1px),
+  ('medium', 40px, 2px),
+  ('big', 60px, 4px),
+  ('massive', 80px, 6px)
+);
+
+.display-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $background-color;
+  color: $color;
+  width: 25px;
+  height: 25px;
+  transition: background-color $transition-time $transition-timing,
+    color $transition-time $transition-timing;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  mix-blend-mode: multiply;
+
+  &::before,
+  &::after {
+    content: '';
+
+    background-color: currentColor;
+    position: absolute;
+  }
+
+  &::after {
+    transform: rotate(90deg);
+  }
+
+  &.active {
+    &::after {
+      transform: rotate(0deg);
+    }
+  }
+
+  &:hover {
+    outline: none;
+    background-color: transparent;
+    color: $background-color;
+  }
+
+  @each $name, $width, $stroke in $sizes {
+    &--size-#{$name} {
+      width: $width;
+      height: $width;
+      border: solid $stroke $background-color;
+      &::before,
+      &::after {
+        width: calc(100% - ($button-gap));
+        height: $stroke;
+        top: calc(50% - (#{$stroke} / 2));
+        left: calc(#{$button-gap} / 2);
+        transition: transform $transition-time $transition-timing;
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import SimpleDownloadButton from '@/buttons/SimpleDownloadButton/SimpleDownloadB
 import SciFiActionButton from '@/buttons/SciFiActionButton/SciFiActionButton';
 import Title from '@/components/Title';
 import RepoLink from '@/components/RepoLink/RepoLink';
+import DisplayButtonGrid from '@/buttons/DisplayButton/DisplayButtonGrid';
 
 export default function Home() {
   return (
@@ -94,8 +95,9 @@ export default function Home() {
             <SciFiActionButton variant="yellow-color">audit</SciFiActionButton>
           </GridItem>
         </MainSection>
+        <DisplayButtonGrid />
       </ButtonGrid>
-      <RepoLink link='https://github.com/devMiguelCarrero/cool-jsx-buttons' />
+      <RepoLink link="https://github.com/devMiguelCarrero/cool-jsx-buttons" />
     </main>
   );
 }
