@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@function background-illumination($hex, $opacity) {
+  @return rgba(red($hex), green($hex), blue($hex), $opacity);
+}
+
+$border-image: url('/img/frame-hd.png');
+$border-outset: 6px;
+$border-width: 12px;
+
+$button-font: 'Press Start 2P', system-ui;
+
+$button-shine: background-illumination(#fff, 0.3);
+$button-shadow: background-illumination(#000, 0.2);
+$button-hover-shine: background-illumination(#fff, 0.4);
+$button-hover-shadow: background-illumination(#000, 0.3);
+
+$button-green: #4bb244;
+$button-red: #f22561;
+$button-yellow: #f2c019;
+$button-blue: #4eb6d9;
+
+$colors: ('green', $button-green), ('red', $button-red),
+  ('yellow', $button-yellow), ('blue', $button-blue);
+
+.bit16-button {
+  position: relative;
+  border-image: $border-image;
+  background-color: $button-green;
+  border-image-repeat: initial;
+  padding: 4px 18px;
+  border-image-slice: 12;
+  border-width: $border-width;
+  font-size: 24px;
+  border-image-outset: $border-outset;
+  cursor: pointer;
+  font-family: $button-font;
+  line-height: 0.8;
+
+  @each $name, $color in $colors {
+    &.has-#{$name}-background {
+      background-color: $color;
+    }
+  }
+
+  &__background {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: calc(0% - #{$border-outset});
+    width: calc(100% + (#{$border-outset} * 2));
+    height: $border-outset;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &--lower {
+      background-color: $button-shadow;
+      top: calc(100% + #{$border-outset});
+
+      &::before,
+      &::after {
+        width: $border-outset;
+        bottom: 100%;
+      }
+
+      &::before {
+        height: calc($border-outset * 2);
+        background-color: $button-shadow;
+        left: 100%;
+      }
+
+      &::after {
+        height: $border-outset;
+        background-color: $button-shadow;
+        right: 0;
+      }
+    }
+
+    &--upper {
+      bottom: calc(100% + #{$border-outset});
+      background-color: $button-shine;
+
+      &::before,
+      &::after {
+        width: $border-outset;
+        top: 100%;
+      }
+
+      &::before {
+        height: calc($border-outset * 2);
+        background-color: $button-shine;
+        right: 100%;
+      }
+
+      &::after {
+        height: $border-outset;
+        background-color: $button-shine;
+        left: 0;
+      }
+    }
+  }
+
+  &:hover {
+    .bit16-button__background {
+      &--upper,
+      &--upper::after,
+      &--upper::before {
+        background-color: $button-hover-shine;
+      }
+
+      &--lower,
+      &--lower::after,
+      &--lower::before {
+        background-color: $button-hover-shadow;
+      }
+    }
+  }
+
+  &:active {
+    .bit16-button__background {
+      &--upper,
+      &--upper::after,
+      &--upper::before {
+        background-color: $button-shadow;
+      }
+
+      &--lower,
+      &--lower::after,
+      &--lower::before {
+        background-color: $button-shine;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 5;
+  }
+}

@@ -7,6 +7,7 @@ import SciFiActionButton from '@/buttons/SciFiActionButton/SciFiActionButton';
 import Title from '@/components/Title';
 import RepoLink from '@/components/RepoLink/RepoLink';
 import DisplayButtonGrid from '@/buttons/DisplayButton/DisplayButtonGrid';
+import Bit16SnxButtonGrid from '@/buttons/Bit16SnxButton/Bit16SnxButtonGrid';
 
 export default function Home() {
   return (
@@ -96,6 +97,7 @@ export default function Home() {
           </GridItem>
         </MainSection>
         <DisplayButtonGrid />
+        <Bit16SnxButtonGrid />
       </ButtonGrid>
       <RepoLink link="https://github.com/devMiguelCarrero/cool-jsx-buttons" />
     </main>
