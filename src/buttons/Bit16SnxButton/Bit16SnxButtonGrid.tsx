@@ -1,6 +1,4 @@
-'use client';
-
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import MainSection from '@/components/UI/MainSection';
 import { GridItem } from '@/components/UI/ButtonGrid';
