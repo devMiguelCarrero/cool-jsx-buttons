@@ -23,6 +23,30 @@ $button-blue: #4eb6d9;
 $colors: ('green', $button-green), ('red', $button-red),
   ('yellow', $button-yellow), ('blue', $button-blue);
 
+$polygon-points: (
+  0 calc(#{$border-outset} * 2),
+  calc(100% - (#{$border-outset} * 2)) calc(#{$border-outset} * 2),
+  calc(100% - (#{$border-outset} * 2)) #{$border-outset},
+  calc(100% - #{$border-outset}) #{$border-outset},
+  calc(100% - #{$border-outset}) 0,
+  100% 0,
+  100% calc(#{$border-outset} * 2),
+  calc(100% - #{$border-outset}) calc(#{$border-outset} * 2),
+  calc(100% - #{$border-outset}) 100%,
+  0 100%
+);
+
+@function generate-clip-path($points) {
+  $value: 'polygon(';
+
+  @each $point in $points {
+    $value: $value + $point + ', ';
+  }
+
+  $value: unquote(str-slice($value, 1, str-length($value) - 2));
+  @return $value + ')';
+}
+
 .bit16-button {
   position: relative;
   border-image: $border-image;
@@ -43,101 +67,49 @@ $colors: ('green', $button-green), ('red', $button-red),
     }
   }
 
-  &__background {
-    display: block;
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
-    z-index: 1;
+    display: block;
+    z-index: 0;
+
+    width: calc(100% + (#{$border-outset} * 3));
+    height: calc(#{$border-outset} * 3);
+  }
+
+  &::before {
+    background-color: $button-shadow;
     left: calc(0% - #{$border-outset});
-    width: calc(100% + (#{$border-outset} * 2));
-    height: $border-outset;
+    top: calc(100% - (#{$border-outset}));
+    clip-path: generate-clip-path($polygon-points);
+  }
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-    }
-
-    &--lower {
-      background-color: $button-shadow;
-      top: calc(100% + #{$border-outset});
-
-      &::before,
-      &::after {
-        width: $border-outset;
-        bottom: 100%;
-      }
-
-      &::before {
-        height: calc($border-outset * 2);
-        background-color: $button-shadow;
-        left: 100%;
-      }
-
-      &::after {
-        height: $border-outset;
-        background-color: $button-shadow;
-        right: 0;
-      }
-    }
-
-    &--upper {
-      bottom: calc(100% + #{$border-outset});
-      background-color: $button-shine;
-
-      &::before,
-      &::after {
-        width: $border-outset;
-        top: 100%;
-      }
-
-      &::before {
-        height: calc($border-outset * 2);
-        background-color: $button-shine;
-        right: 100%;
-      }
-
-      &::after {
-        height: $border-outset;
-        background-color: $button-shine;
-        left: 0;
-      }
-    }
+  &::after {
+    background-color: $button-shine;
+    right: calc(0% - #{$border-outset});
+    bottom: calc(100% - (#{$border-outset}));
+    transform: rotate(0.5turn);
+    clip-path: generate-clip-path($polygon-points);
   }
 
   &:hover {
-    .bit16-button__background {
-      &--upper,
-      &--upper::after,
-      &--upper::before {
-        background-color: $button-hover-shine;
-      }
-
-      &--lower,
-      &--lower::after,
-      &--lower::before {
-        background-color: $button-hover-shadow;
-      }
+    &::before {
+      background-color: $button-hover-shadow;
+    }
+    &::after {
+      background-color: $button-hover-shine;
     }
   }
 
   &:active {
-    .bit16-button__background {
-      &--upper,
-      &--upper::after,
-      &--upper::before {
-        background-color: $button-shadow;
-      }
-
-      &--lower,
-      &--lower::after,
-      &--lower::before {
-        background-color: $button-shine;
-      }
+    &::before {
+      background-color: $button-shine;
+    }
+    &::after {
+      background-color: $button-shadow;
     }
   }
 
-  &__content {
-    position: relative;
-    z-index: 5;
-  }
+  
 }
