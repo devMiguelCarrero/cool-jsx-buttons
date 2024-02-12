@@ -7,23 +7,7 @@ const Bit16SnxButton = ({ children, background }) => {
     [classes[`has-${background}-background`]]: background,
   });
 
-  return (
-    <button className={classNames}>
-      <div
-        className={cx(
-          classes['bit16-button__background'],
-          classes['bit16-button__background--lower']
-        )}
-      />
-      <div
-        className={cx(
-          classes['bit16-button__background'],
-          classes['bit16-button__background--upper']
-        )}
-      />
-      <span className={classes['bit16-button__content']}>{children}</span>
-    </button>
-  );
+  return <button className={classNames}>{children}</button>;
 };
 
 export default Bit16SnxButton;
