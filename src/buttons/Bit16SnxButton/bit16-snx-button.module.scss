@@ -59,7 +59,7 @@ $polygon-points: (
   border-image-outset: $border-outset;
   cursor: pointer;
   font-family: $button-font;
-  line-height: 0.8;
+  line-height: 0.6;
 
   @each $name, $color in $colors {
     &.has-#{$name}-background {
@@ -110,6 +110,4 @@ $polygon-points: (
       background-color: $button-shadow;
     }
   }
-
-  
 }
